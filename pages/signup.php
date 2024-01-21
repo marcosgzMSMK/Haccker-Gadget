@@ -40,35 +40,60 @@ $mysqli->close();
 ?>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <!DOCTYPE html>
-<style> 
-    .signup{
-    text-align: center;
-    margin-top: 10%;
-    }
-</style>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse - Haccing</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Framework de Boostrap -->
     <link rel="icon" href="../img/HacckingGadget-icon.ico">
+    <style>
+        body {
+            background-color: #131313; /* Color de fondo */
+            color: white; /* Color del texto */
+        }
+
+        .signup {
+            background-color: #292929;
+            text-align: center;
+            margin-top: 10%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        form {
+            max-width: 300px; /* Ancho máximo del formulario */
+            margin: 0 auto; /* Centrar el formulario en la página */
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Espaciado entre grupos de formularios */
+        }
+
+        .form-control {
+            width: 100%;
+        }
+    </style>
 </head>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <body>
-    <main>  
-        <section class="signup">
-            <h1>Registrarse</h1>
+    <main class="container">
+        <section class="signup mt-5">
+            <h1 class="mb-4">Registrarse</h1>
             <form action="signup.php" method="post">
-                <label for="username">Nombre de Usuario:</label>
-                <input type="text" id="username" name="username" required>
-
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
-
-                <input type="submit" value="Registrarse">
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
             </form>
-            <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a></p> <!--Redirigir al usuario en caso de que realmente si estaba registrado anteriormente-->
+            <p>¿Ya tienes una cuenta? <a href="login.php">Inicia sesión aquí</a></p> <!--Redirigir al usuario en caso de que realmente sí estaba registrado anteriormente-->
         </section>
     </main>
 </body>

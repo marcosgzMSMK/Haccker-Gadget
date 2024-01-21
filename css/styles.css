@@ -1,0 +1,157 @@
+html{
+    font-family: 'Lato', sans-serif;
+    background-color: #131313;
+    color: #ebebeb;
+}
+
+a{
+    text-decoration:none;
+    color:#ebebeb;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a:hover{
+    color: rgb(204, 255, 122)
+}
+a:active{
+    color:orange;
+}
+/*a:visited{
+    color:purple;
+} */
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    height:3em;
+    background-color:#131313;
+}
+
+.menu{
+    height: 5em;
+    background-color: #131313;
+    padding-bottom: 8em;
+    margin-left:2%;
+    margin-right: 3%;
+
+}
+.menu img{
+    position:relative;
+    top:1em;
+    margin-right: 1%;
+    margin-left:26%;
+    height: 200%;
+    margin-bottom: -5%;
+
+}
+.menu a{
+    font-size: 1.5em;
+    margin-left: 5%;
+}
+
+.envios {
+    display: flex;
+    height: 3em;
+    background-color: #131313;
+    padding-left: 25%;
+    gap: 70px;
+}
+
+
+.horaDeMoverse{
+    height: 50em;
+    width: 125em;
+    background-image: url('../img/artwork.png');
+    position: relative;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.textoMoverse{
+    font-family: 'Lato', sans-serif; 
+    display: block;
+    position: relative;
+    left: 43%;
+    top: 30%;
+
+}
+
+
+@keyframes cambioColor {
+    0% {
+        color: rgba(0, 0, 0, 0);
+    }
+    25% {
+        color: rgb(204, 255, 122);
+    }
+    50% {
+        color: orange;
+    }
+    75% {
+        color: rgb(204, 255, 122);
+    }
+    100% {
+        color: rgba(0, 0, 0, 0);
+    }
+}
+
+#tituloMov {
+    font-size: 2em;
+    color: rgb(0, 255, 255);
+    font-weight: 900;
+    animation: cambioColor 8s infinite; 
+}
+
+#textoMov {
+    color: #041168;
+    color: rgb(0, 255, 255);
+    font-weight: 300;
+    font-size: 1.5em;
+    margin-left: -8%;
+    animation: cambioColor 8s infinite; 
+}
+
+
+.textoMoverse a{
+    display: inline-block;
+    width: 10em;
+    height: 4em;
+    position: relative;
+    background-color: white;
+    color: grey;
+    font-weight: 900;
+    padding-top: 2%;
+    border: 1px solid #808080;
+}
+
+.productos{
+    position:relative;
+    top:1em;
+    margin-right: 5%;
+    margin-left:35%;
+
+}
+.productos article{
+    width: 60%;
+    
+}
+
+.quienes-somos {
+    max-width: 650px; 
+    text-align: center;
+    margin: 3em; 
+    margin-left: 35%;
+    margin-top: 15%;
+}
+
+.login{
+    text-align: center;
+    margin-top: 10%;
+}
+
+.signup{
+    text-align: center;
+    margin-top: 10%;
+}

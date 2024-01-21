@@ -3,11 +3,45 @@
 <?php
 session_start();
 
-// Verificar si el usuario no está autenticado
 if (!isset($_SESSION["username"])) {
-    // Si no está autenticado, redirigir al inicio de sesión
+    // Si el usuario no está autenticado, redirigir al inicio de sesión
     header("Location: pages/login.php");
     exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (isset($_POST["confirm_delete"])) {
+        $username = $_SESSION["username"];
+
+        // Conectar a la base de datos
+        $mysqli = new mysqli("127.0.0.1", "root", "razerblade", "hacckergadget", 3306);
+
+        if ($mysqli->connect_errno) {
+            echo "Fallo al conectarse a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+        }
+
+        // Eliminar el usuario de la base de datos del historial también
+		$deleteHistoryQuery = "DELETE FROM HistorialCompras WHERE id_usuario = (SELECT id FROM Usuarios WHERE nombre_usuario = '$username')";
+		$deleteHistoryResult = $mysqli->query($deleteHistoryQuery);
+
+        $deleteQuery = "DELETE FROM Usuarios WHERE nombre_usuario = '$username'";
+        $deleteResult = $mysqli->query($deleteQuery);
+
+        if ($deleteResult) {
+            // Destruir todas las variables de sesión
+            session_destroy();
+
+            // Redirigir a una página de despedida o a donde lo consideres apropiado
+            header("Location: pages/login.php");
+            exit();
+        } else {
+            // Error al eliminar la cuenta
+            echo "Error al eliminar la cuenta. Inténtalo nuevamente.";
+        }
+
+        $mysqli->close();
+    }
 }
 ?>
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -35,6 +69,10 @@ if (!isset($_SESSION["username"])) {
 			<a href="pages/quienes-somos.html" style="font-size: 40px;">Quienes somos</a>
 			<a href="pages/tienda.php" style="font-size: 40px;">Tienda</a>
 			<a href="pages/contacto.php" style="font-size: 40px;">Contacto</a>
+			<a href="pages/changepasswd.php" style="font-size: 30px;">Cambiar Contraseña</a>
+			<form id="deleteAccountForm" method="post" action="index.php">
+                <button type="submit" name="confirm_delete" style="font-size: 30px; margin-left:5%; color:red; background: none; border: none; cursor: pointer;">Eliminar cuenta</button>
+            </form>
 		</div>
 		<div class="envios">
 			<a href="#">ENVÍO GRATIS EN MÁS DE 50€</a>

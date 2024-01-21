@@ -29,7 +29,7 @@ if ($idResult->num_rows == 1) {
 }
 
 // Obtener historial de compras del usuario
-$historialQuery = "SELECT fecha_compra, producto1, producto2, COALESCE(producto3, 0) AS producto3 FROM HistorialCompras WHERE id_usuario = $userId";
+$historialQuery = "SELECT fecha_compra, producto1, producto2, producto3 FROM HistorialCompras WHERE id_usuario = $userId";
 $historialResult = $mysqli->query($historialQuery);
 // almacenar todas las filas
 $historial = [];
